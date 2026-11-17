@@ -12,7 +12,6 @@ import android.graphics.drawable.ShapeDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.graphics.drawable.DrawableCompat
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.patcher.after
@@ -172,9 +171,6 @@ class StatusColors : Plugin() {
             else -> null
         }
         if (baseColor != null) return baseColor
-
-        val tint = runCatching { DrawableCompat.getTintList(drawable)?.defaultColor }.getOrNull()
-        if (tint != null) return tint
 
         if (drawable is android.graphics.drawable.LayerDrawable) {
             for (index in 0 until drawable.numberOfLayers) {
